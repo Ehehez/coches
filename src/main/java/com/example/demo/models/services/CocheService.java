@@ -6,12 +6,13 @@ import java.util.Optional;
 import com.example.demo.models.dao.CocheDAO;
 import com.example.demo.models.entities.Coche;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CocheService {
 
-    /* @Autowired */
+     @Autowired 
     private CocheDAO usuarioDAO;
 
     public Coche save(Coche usuario) {

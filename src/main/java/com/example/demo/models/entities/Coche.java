@@ -31,7 +31,6 @@ public class Coche implements Serializable{
     private String color;
 
     @Column(name = "Id_Empresa")
-    @NotEmpty
     private int empresaId;
 
     /**

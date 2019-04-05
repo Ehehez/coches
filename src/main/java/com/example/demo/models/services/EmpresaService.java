@@ -6,12 +6,13 @@ import java.util.Optional;
 import com.example.demo.models.dao.EmpresaDAO;
 import com.example.demo.models.entities.Empresa;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class EmpresaService {
 
-    /* @Autowired */
+    @Autowired 
     private EmpresaDAO usuarioDAO;
 
     public Empresa save(Empresa usuario) {
