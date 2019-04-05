@@ -81,7 +81,6 @@ public class Usuario implements Serializable{
     }
 
     @Column(name = "created_at")
-    @NotEmpty
     private Date created_at;
 
     public Date getCreated() {
@@ -93,7 +92,6 @@ public class Usuario implements Serializable{
     }
 
     @Column(name = "updated_at")
-    @NotEmpty
     private Date updated_at;
 
     public Date getUpdated() {
