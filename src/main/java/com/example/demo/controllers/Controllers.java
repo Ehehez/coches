@@ -1,6 +1,5 @@
 package com.example.demo.controllers;
 
-import java.util.List;
 
 import com.example.demo.models.entities.Usuario;
 import com.example.demo.models.services.UsuarioService;

@@ -3,34 +3,34 @@ package com.example.demo.models.services;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.demo.models.dao.UsuarioDAO;
-import com.example.demo.models.entities.Usuario;
+import com.example.demo.models.dao.CocheDAO;
+import com.example.demo.models.entities.Coche;
 
 import org.springframework.stereotype.Service;
 
 @Service
-public class UsuarioService {
+public class CocheService {
 
     /* @Autowired */
-    private UsuarioDAO usuarioDAO;
+    private CocheDAO usuarioDAO;
 
-    public Usuario save(Usuario usuario) {
+    public Coche save(Coche usuario) {
         return usuarioDAO.save(usuario);
     }
 
-    public Usuario update(Usuario usuario) {
+    public Coche update(Coche usuario) {
         return usuarioDAO.save(usuario);
     }
 
-    public void delete(Usuario usuario) {
+    public void delete(Coche usuario) {
         usuarioDAO.delete(usuario);
     }
 
-    public Optional<Usuario> findById(int id) {
+    public Optional<Coche> findById(int id) {
         return usuarioDAO.findById(id);
     }
 
-    public List<Usuario> findAll(){
+    public List<Coche> findAll(){
         return usuarioDAO.findAll(); 
     }
 

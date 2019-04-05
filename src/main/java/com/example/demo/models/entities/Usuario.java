@@ -1,5 +1,6 @@
 package com.example.demo.models.entities;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.CascadeType;
@@ -17,7 +18,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "usuario")
-public class Usuario {
+public class Usuario implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -103,6 +104,5 @@ public class Usuario {
         this.updated_at = date;
     }
 
-    //@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "usuario")
-    //private UsuarioEmpresa usuarioempresa;
+
 }

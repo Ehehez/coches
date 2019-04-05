@@ -1,5 +1,7 @@
 package com.example.demo.models.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,7 +15,7 @@ import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name="coche")
-public class Coche {
+public class Coche implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +30,7 @@ public class Coche {
     @Column(name = "Color")
     private String color;
 
-    @Column(name = "Id Empresa")
+    @Column(name = "Id_Empresa")
     @NotEmpty
     private int empresaId;
 
@@ -102,8 +104,8 @@ public class Coche {
         this.id = id;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    /*@ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "empresaId", nullable = false)
-    private Empresa empresa;
+    private Empresa empresa;*/
 
 }

@@ -1,5 +1,6 @@
 package com.example.demo.models.entities;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.CascadeType;
@@ -17,12 +18,12 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "empresa")
-public class Empresa {
+public class Empresa implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "Nombre Empresa")
+    @Column(name = "Nombre_Empresa")
     @NotEmpty
     @Size(max = 100)
     private String nombreEmpresa;
@@ -87,6 +88,6 @@ public class Empresa {
         this.id = id;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "empresa")
-    private Coche coche;
+    /*@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "empresa")
+    private Coche coche;*/
 }
