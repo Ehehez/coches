@@ -3,13 +3,20 @@ package com.example.demo.models.entities;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.UniqueConstraint;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
@@ -105,6 +112,10 @@ public class Usuario implements Serializable{
     @OneToMany(mappedBy = "usuario")
     private Set<UsuarioEmpresa> UsuarioEmpresa = new HashSet<UsuarioEmpresa>();
     
-    
+    /*@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinTable(name="usuario_empresa", joinColumns= @JoinColumn(name="usuario_id"),
+	inverseJoinColumns=@JoinColumn(name="empresa_id"),
+	uniqueConstraints= {@UniqueConstraint(columnNames= {"usuario_id", "empresa_id"})})
+	private List<Empresa> empresas;*/
 
 }
