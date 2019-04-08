@@ -89,4 +89,7 @@ public class Empresa implements Serializable{
 
     @OneToMany(mappedBy = "empresa")
     private Set<UsuarioEmpresa> UsuarioEmpresa = new HashSet<UsuarioEmpresa>();
+
+    @OneToMany(mappedBy="empresa")
+    private Set<Coche> coches = new HashSet<Coche>();
 }

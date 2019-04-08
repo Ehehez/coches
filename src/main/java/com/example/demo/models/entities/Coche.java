@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,8 +28,9 @@ public class Coche implements Serializable{
     @Column(name = "Color")
     private String color;
 
-    @Column(name = "Id_Empresa")
-    private int empresaId;
+    @ManyToOne
+    @JoinColumn(name="empresa_id", nullable=false)
+    private Empresa empresa;
 
     /**
      * @return the id
@@ -36,19 +39,9 @@ public class Coche implements Serializable{
         return id;
     }
 
-    /**
-     * @return the empresaId
-     */
-    public int getEmpresaId() {
-        return empresaId;
-    }
 
-    /**
-     * @param empresaId the empresaId to set
-     */
-    public void setEmpresaId(int empresaId) {
-        this.empresaId = empresaId;
-    }
+
+
 
     /**
      * @return the color
@@ -97,6 +90,20 @@ public class Coche implements Serializable{
      */
     public void setId(int id) {
         this.id = id;
+    }
+
+    /**
+     * @return the empresa
+     */
+    public Empresa getEmpresa() {
+        return empresa;
+    }
+
+    /**
+     * @param idempresa the empresa to set
+     */
+    public void setEmpresa(Empresa idempresa) {
+        this.empresa = idempresa;
     }
 
 

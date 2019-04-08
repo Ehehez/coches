@@ -8,6 +8,7 @@ import javax.websocket.server.PathParam;
 import com.example.demo.models.entities.Usuario;
 import com.example.demo.models.services.UsuarioService;
 
+import org.apache.tomcat.jni.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,8 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = { "*" })
 @RestController
-@RequestMapping("/")
-public class Controllers {
+@RequestMapping("/user")
+public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
@@ -77,4 +78,15 @@ public class Controllers {
        }
        return user;
    }
+
+   @GetMapping("/del")
+    public Usuario delete(@PathParam("id") int id) {
+        Usuario user = new Usuario();
+        if (usuarioService.findById(id).orElse(null) != null) {
+            user.setId(id);
+            usuarioService.delete(user);
+            return user;
+        }
+        return user;
+    }
 }

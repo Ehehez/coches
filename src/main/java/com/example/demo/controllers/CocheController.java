@@ -1,10 +1,12 @@
 package com.example.demo.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.websocket.server.PathParam;
 
 import com.example.demo.models.entities.Coche;
+import com.example.demo.models.entities.Empresa;
 import com.example.demo.models.services.CocheService;
 import com.example.demo.models.services.EmpresaService;
 
@@ -34,7 +36,9 @@ public class CocheController {
                 
                 user.setModelo(modelo);
                 user.setColor(color);
-                user.setEmpresaId(idempresa);
+                Empresa bla=new Empresa();
+                bla.setId(idempresa);
+                user.setEmpresa(bla);
                 user.setMarca(marca);
                 
                 cocheService.save(user);
@@ -54,7 +58,8 @@ public class CocheController {
         List<Coche> usuarios = cocheService.findAll();
         String b = "";
         for (Coche a : usuarios) {
-            b += "\n Modelo :" + a.getModelo() + "\t ID: " + a.getId();
+            Empresa emp = (empresaService.findById(a.getEmpresa().getId())).orElse(null);
+            b += "\n Modelo :" + a.getModelo() + "\t ID: " + a.getId() + "\t Empresa:" + (emp.getNombreEmpresa());
         }
 
         return b;
@@ -71,7 +76,9 @@ public class CocheController {
                 user.setId(id);
                 user.setModelo(modelo);
                 user.setColor(color);
-                user.setEmpresaId(idempresa);
+                Empresa bla=new Empresa();
+                bla.setId(idempresa);
+                user.setEmpresa(bla);
                 user.setMarca(marca);
 
                 cocheService.save(user);
@@ -79,4 +86,16 @@ public class CocheController {
         }
         return user;
     }
+
+    @GetMapping("/del")
+    public Coche delete(@PathParam("id") int id) {
+        Coche user = new Coche();
+        if (cocheService.findById(id).toString() != "Optional.empty") {
+            user.setId(id);
+            cocheService.delete(user);
+            
+        }
+        return user;
+    }
+
 }
