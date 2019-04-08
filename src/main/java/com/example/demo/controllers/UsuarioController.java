@@ -8,7 +8,6 @@ import javax.websocket.server.PathParam;
 import com.example.demo.models.entities.Usuario;
 import com.example.demo.models.services.UsuarioService;
 
-import org.apache.tomcat.jni.User;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
