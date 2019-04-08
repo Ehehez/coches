@@ -2,6 +2,8 @@ package com.example.demo.models.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
@@ -86,6 +87,6 @@ public class Empresa implements Serializable{
         this.id = id;
     }
 
-    /*@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "empresa")
-    private Coche coche;*/
+    @OneToMany(mappedBy = "empresa")
+    private Set<UsuarioEmpresa> UsuarioEmpresa = new HashSet<UsuarioEmpresa>();
 }
