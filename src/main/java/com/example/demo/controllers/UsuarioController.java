@@ -52,15 +52,19 @@ public class UsuarioController {
     }
 
     @GetMapping("/mostrar")
-    public String mostrar() {
+    public List<Usuario> mostrar() {
         // ModelAndView mav = new ModelAndView("/mostrar");
         List<Usuario> usuarios = usuarioService.findAll();
         String b = "";
+        String head1 = "Nombre";
+        String head2 = "ID";
+        System.out.printf( "%-15s %15s %n", head1, head2);
         for (Usuario a : usuarios) {
-            b += "\n Nombre :" + a.getNombre() + "\t ID: " + a.getId();
+            /*b += "\n Nombre :" + a.getNombre() + "\t ID: " + a.getId();*/
+            System.out.printf( "%-15s %15s %n", a.getNombre(), a.getId());
         }
 
-        return b;
+        return usuarios;
     }
 
     @GetMapping("/update")

@@ -13,10 +13,13 @@ import com.example.demo.models.services.EmpresaService;
 import com.example.demo.models.services.UsuarioEmpresaService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/empresas")
 public class EmpresaController {
@@ -49,8 +52,9 @@ public class EmpresaController {
         return user;
     }
 
-    @GetMapping("/mostrar")
-    public String mostrar() {
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/mostrar")    
+    public List<Empresa> mostrar() {
         // ModelAndView mav = new ModelAndView("/mostrar");
         List<Empresa> usuarios = empresaService.findAll();
         String b = "";
@@ -58,9 +62,15 @@ public class EmpresaController {
             b += "\n Nombre :" + a.getNombreEmpresa() + "\t ID: " + a.getId();
         }
 
-        return b;
+        return usuarios;
     }
 
+    @GetMapping("/{id}")
+    public Empresa mostraruna(@PathVariable("id") int id){
+        Empresa b = empresaService.findById(id).orElse(null);
+        return b;
+    }
+    
     @GetMapping("/update")
     public Empresa update(@PathParam("id") int id, @PathParam("nombre") String nombre) {
         Empresa user = new Empresa();
