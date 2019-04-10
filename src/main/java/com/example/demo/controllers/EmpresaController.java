@@ -80,6 +80,7 @@ public class EmpresaController {
 
             user.setNombreEmpresa(nombre);
             Date dateobj = new Date(System.currentTimeMillis());
+            user.setCreated_at(empresaService.findById(id).orElse(null).getCreated_at());
             user.setUpdated_at(dateobj);
             empresaService.update(user);
         }
